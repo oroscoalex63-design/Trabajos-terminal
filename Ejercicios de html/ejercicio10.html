@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Evaluación de inglés</title>
+</head>
+<body>
+  <script>
+    const nombre = prompt("Ingrese el nombre del estudiante:");
+    const notas = [];
+    notas.push(parseFloat(prompt("Ingrese nota Speaking (0-100):")));
+    notas.push(parseFloat(prompt("Ingrese nota Listening (0-100):")));
+    notas.push(parseFloat(prompt("Ingrese nota Reading (0-100):")));
+    notas.push(parseFloat(prompt("Ingrese nota Writing (0-100):")));
+
+    let suma = 0;
+    let notaMin = notas[0];
+
+    for (let i = 0; i < notas.length; i++) {
+      suma += notas[i];
+      if (notas[i] < notaMin) notaMin = notas[i];
+    }
+
+    const promedio = suma / notas.length;
+    let nivel;
+
+    if (promedio >= 90) nivel = "C2 — Maestría";
+    else if (promedio >= 75) nivel = "C1 — Avanzado";
+    else if (promedio >= 60) nivel = "B2 — Intermedio alto";
+    else if (promedio >= 45) nivel = "B1 — Intermedio";
+    else nivel = "A2 — Básico";
+
+    document.write("<h3>Evaluación de inglés</h3>");
+    document.write("Estudiante: " + nombre + "<br>");
+    document.write("Notas: " + notas.join(", ") + "<br>");
+    document.write("Nota más baja: " + notaMin + "<br>");
+    document.write("Promedio: " + promedio.toFixed(2) + "<br>");
+    document.write("Nivel asignado: " + nivel);
+  </script>
+</body>
+</html>

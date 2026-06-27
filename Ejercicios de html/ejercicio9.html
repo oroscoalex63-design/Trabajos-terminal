@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Edad de mascotas</title>
+</head>
+<body>
+  <script>
+    const nombre = prompt("Ingrese el nombre de la mascota:");
+    const tipo = prompt("Ingrese el tipo de mascota (perro o gato):").toLowerCase();
+    const edadMascota = parseInt(prompt("Ingrese la edad en años de la mascota:"));
+
+    let edadHumana = 0;
+
+    if (tipo === "perro") {
+      edadHumana = edadMascota <= 2 
+        ? edadMascota * 10.5 
+        : (2 * 10.5) + ((edadMascota - 2) * 4);
+    } else if (tipo === "gato") {
+      edadHumana = edadMascota <= 2 
+        ? edadMascota * 12 
+        : (2 * 12) + ((edadMascota - 2) * 4);
+    } else {
+      alert("Tipo de mascota no reconocido");
+    }
+
+    if (edadHumana > 0) {
+      document.write("<h3>Registro de mascota</h3>");
+      document.write("Nombre: " + nombre + "<br>");
+      document.write("Tipo: " + tipo + "<br>");
+      document.write("Edad en años de mascota: " + edadMascota + "<br>");
+      document.write("Edad equivalente en humanos: " + edadHumana);
+    }
+  </script>
+</body>
+</html>

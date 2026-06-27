@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Descuento escolar</title>
+</head>
+<body>
+  <script>
+    const producto = prompt("Ingrese el nombre del producto:");
+    const precio = parseFloat(prompt("Ingrese el precio original:"));
+    const porcentaje = parseFloat(prompt("Ingrese el porcentaje de descuento:"));
+
+    if (porcentaje < 1 || porcentaje > 70) {
+      alert("Porcentaje no válido, debe estar entre 1% y 70%");
+    } else {
+      const descuento = precio * (porcentaje / 100);
+      const precioFinal = precio - descuento;
+      const mensaje = porcentaje > 50 ? "¡Oferta especial!" : "Precio de temporada";
+
+      document.write("<h3>Descuento aplicado</h3>");
+      document.write("Producto: " + producto + "<br>");
+      document.write("Precio original: $" + precio.toLocaleString("es-CO") + "<br>");
+      document.write("Descuento: $" + descuento.toLocaleString("es-CO") + "<br>");
+      document.write("Precio final: $" + precioFinal.toLocaleString("es-CO") + "<br>");
+      document.write(mensaje);
+    }
+  </script>
+</body>
+</html>
