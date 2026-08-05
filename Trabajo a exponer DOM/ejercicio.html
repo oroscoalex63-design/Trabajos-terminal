@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio explicativo de DOM </title>
+  <style>
+    #contenedor {
+      border: 3px solid blue;
+      padding: 10px;
+      margin: 10px;
+    }
+    p {
+      margin: 5px;
+      padding: 5px;
+      border: 1px solid gray;
+    }
+    .resaltado {
+      background-color: yellow;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Ejemplo de Navegación en el DOM</h2>
+  <div id="contenedor">
+    <p id="parrafo1">Primer párrafo</p>
+    <p id="parrafo2">Segundo párrafo</p>
+    <p id="parrafo3">Tercer párrafo</p>
+  </div>
+  <button onclick="mostrarPadre()">Ver padre</button>
+  <button onclick="mostrarHijos()">Ver hijos</button>
+  <button onclick="mostrarHermanoSiguiente()">Ver hermano siguiente</button>
+  <button onclick="mostrarHermanoAnterior()">Ver hermano anterior</button>
+
+<script>
+  //Aquí se guarda en una variable el elemento con id en parrafo2 
+  //Este es el punto de referencia para buscar padre, hijos y hermanos
+    let parrafo2 = document.getElementById("parrafo2");
+
+  //Quita la clase  de resaltado de todos los párrafos
+  //querySelectorAll selecciona todos los elementos p y div, y forEach recorre cada uno de ellos para eliminar la clase de resaltado
+    function limpiarResaltados() {
+      document.querySelectorAll("p, div").forEach(el => el.classList.remove("resaltado"));
+    }
+
+    // parentElement = el padre
+    function mostrarPadre() {
+      limpiarResaltados();
+      let padre = parrafo2.parentElement;
+      padre.classList.add("resaltado");
+      console.log("Padre de parrafo2:", padre);
+    }
+
+    // children = los hijos del padre
+    // for para recorer los hijos del padre de parrafo2
+    function mostrarHijos() {
+      limpiarResaltados();
+      let hijos = parrafo2.parentElement.children;
+      for (let hijo of hijos) {
+        hijo.classList.add("resaltado");
+      }
+      console.log("Hijos del contenedor:", hijos);
+    }
+
+    // nextElementSibling = el hermano siguiente
+    // if para verificar si existe el hermano siguiente de parrafo2
+    function mostrarHermanoSiguiente() {
+  limpiarResaltados();
+  let hermanoSiguiente = parrafo2.nextElementSibling;
+  if (hermanoSiguiente) {
+    hermanoSiguiente.classList.add("resaltado");
+    console.log("Hermano siguiente de parrafo2:", hermanoSiguiente);
+  } else {
+    console.log("No hay hermano siguiente.");
+  }
+}
+
+    // previousElementSibling = el hermano anterior
+    // if para verificar si existe el hermano anterior de parrafo2
+    function mostrarHermanoAnterior() {
+      limpiarResaltados();
+      let hermanoAnterior = parrafo2.previousElementSibling;
+      if (hermanoAnterior) {
+        hermanoAnterior.classList.add("resaltado");
+        console.log("Hermano anterior de parrafo2:", hermanoAnterior);
+      } else {
+        console.log("No hay hermano anterior.");
+      }
+    }
+
+
+  
+  </script>
+</body>
+</html>
