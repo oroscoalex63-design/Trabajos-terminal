@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechStore</title>
+    <style>
+        .destacado {
+            background-color: #f0f8ff;
+            border: 2px solid #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo">TechStore</h1>
+
+    <p class="descripcion">Productos disponibles</p>
+
+    <section id="catalogo">
+        <article class="producto" data-id="P001">
+            <h2>Laptop Lenovo</h2>
+            <p class="precio">$4.800.000</p>
+            <button class="btnComprar">Comprar</button>
+        </article>
+
+        <article class="producto" data-id="P002">
+            <h2>Monitor LG</h2>
+            <p class="precio">$1.200.000</p>
+            <button class="btnComprar">Comprar</button>
+        </article>
+
+        <article class="producto" data-id="P003">
+            <h2>Teclado Mecánico</h2>
+            <p class="precio">$250.000</p>
+            <button class="btnComprar">Comprar</button>
+        </article>
+    </section>
+
+    <script>
+        // A. mostrar título
+        const titulo = document.getElementById("titulo").textContent;
+        console.log(titulo);
+
+        // B. Mostrar el número de productos
+        const productos = document.getElementsByClassName("producto");
+        console.log("Cantidad de productos:", productos.length);
+
+        // C. Recorrer todos los productos utilizando forEach()
+        Array.from(productos).forEach((producto, index) => {
+            const nombre = producto.getElementsByTagName("h2")[0].textContent;
+            console.log(`Producto ${index + 1}: ${nombre}`);
+        });
+
+        // 1. Seleccionamos el primer producto
+        const producto = document.getElementsByClassName("producto")[0];
+        console.log("Primer producto:", producto);
+
+        // 2. Mostrar el nombre del primer producto
+        const nombrePrimerProducto = producto.getElementsByTagName("h2")[0].textContent;
+        console.log("Nombre del primer producto:", nombrePrimerProducto);
+
+        // 3. Mostrar el precio del primer producto
+        const precioPrimerProducto = producto.getElementsByClassName("precio")[0].textContent;
+        console.log("Precio del primer producto:", precioPrimerProducto);
+
+        // 4. Mostrar el botón de compra del primer producto
+        const botonPrimerProducto = producto.getElementsByClassName("btnComprar")[0];
+        console.log("Botón de compra del primer producto:", botonPrimerProducto);
+
+        // 5. Mostrar el elemento padre del primer producto
+        const padrePrimerProducto = producto.parentElement;
+        console.log("Elemento padre del primer producto:", padrePrimerProducto);
+
+        // 6. Mostrar los hijos del primer producto
+        const hijosPrimerProducto = producto.children;
+        console.log("Hijos del primer producto:", hijosPrimerProducto);
+
+        // 7. Mostrar el siguiente hermano del primer producto
+        const siguienteHermano = producto.nextElementSibling;
+        console.log("Siguiente hermano del primer producto:", siguienteHermano);
+
+        // 1. cambiar título de la página
+        document.getElementById("titulo").textContent = "TechStore - tecnologia para todos";
+
+        // 2. cambia el texto de la descripción
+        document.getElementsByClassName("descripcion")[0].textContent = "3 productos diferentes";
+
+        // 3. cambiar el nombre del segundo producto
+        const segundoProducto = productos[1];
+        segundoProducto.getElementsByTagName("h2")[0].textContent = "Monitor LG UltraWide";
+
+        // utiliza dataset
+        const primerProducto = productos[0];
+        const tercerProducto = productos[2];
+        primerProducto.dataset.id = "P001";
+        segundoProducto.dataset.id = "P002";
+        tercerProducto.dataset.id = "P003";
+
+        // agrega data-stock a cada producto
+        primerProducto.dataset.stock = "10";
+        segundoProducto.dataset.stock = "5";
+        tercerProducto.dataset.stock = "15";
+
+        // destacar primer producto
+        primerProducto.classList.add("destacado");
+
+        // Función para destacar cualquier producto
+        function destacarProducto(producto, colorFondo, colorBorde) {
+            producto.classList.add("destacado");
+            producto.style.backgroundColor = colorFondo;
+            producto.style.border = `2px solid ${colorBorde}`;
+        }
+
+        // Usamos la función en diferentes productos
+        destacarProducto(segundoProducto, "#ffe4e1", "#e74c3c"); // Monitor LG
+        destacarProducto(tercerProducto, "#e8f5e9", "#27ae60"); // Teclado Mecánico
+
+        // Preguntas teóricas en consola
+        console.log("1. children devuelve:", primerProducto.children);
+        console.log("2. textContent devuelve solo texto plano, innerHTML incluye etiquetas.");
+        console.log("3. dataset permite manejar atributos personalizados data-* fácilmente.");
+        console.log("4. style modifica estilos inline, classList gestiona clases CSS reutilizables.");
+    </script>
+</body>
+</html>
