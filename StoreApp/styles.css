@@ -1,0 +1,14 @@
+.card {
+    width: 300px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ccc;
+}
+
+.destacada {
+    background-color: #fff3cd;
+}
+
+.inactiva {
+    opacity: 0.5;
+}

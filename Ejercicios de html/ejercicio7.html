@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Planes de datos</title>
+</head>
+<body>
+  <script>
+    let nombre = prompt("Ingrese su nombre:");
+    const plan = parseInt(prompt("Ingrese el número del plan (1, 2 o 3):"));
+
+    // Formatear nombre
+    nombre = nombre.toLowerCase();
+    nombre = nombre.charAt(0).toUpperCase() + nombre.slice(1);
+
+    let planNombre, gigas, precio;
+
+    switch (plan) {
+      case 1:
+        planNombre = "Plan 1";
+        gigas = "2 GB";
+        precio = 25000;
+        break;
+      case 2:
+        planNombre = "Plan 2";
+        gigas = "5 GB";
+        precio = 45000;
+        break;
+      case 3:
+        planNombre = "Plan 3";
+        gigas = "10 GB";
+        precio = 75000;
+        break;
+      default:
+        alert("Plan no disponible");
+        break;
+    }
+
+    if (precio) {
+      document.write("<h3>Contrato de plan</h3>");
+      document.write("Cliente: " + nombre + "<br>");
+      document.write("Plan elegido: " + planNombre + "<br>");
+      document.write("Gigas incluidos: " + gigas + "<br>");
+      document.write("Valor mensual: $" + precio.toLocaleString("es-CO"));
+    }
+  </script>
+</body>
+</html>

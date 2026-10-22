@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cálculo de cambio</title>
+</head>
+<body>
+  <script>
+    const totalCompra = parseFloat(prompt("Ingrese el valor total de la compra:"));
+    const entregado = parseFloat(prompt("Ingrese el valor entregado por el cliente:"));
+
+    if (entregado < totalCompra) {
+      alert("Dinero insuficiente, faltan $" + (totalCompra - entregado).toLocaleString("es-CO"));
+    } else if (entregado === totalCompra) {
+      alert("No hay cambio");
+    } else {
+      const cambio = entregado - totalCompra;
+      document.write("<h3>Resultado</h3>");
+      document.write("Valor de la compra: $" + totalCompra.toLocaleString("es-CO") + "<br>");
+      document.write("Valor entregado: $" + entregado.toLocaleString("es-CO") + "<br>");
+      document.write("Cambio a devolver: $" + cambio.toLocaleString("es-CO"));
+    }
+  </script>
+</body>
+</html>
+
